@@ -3,13 +3,19 @@ title: "Wyatt's Grades on Recent Assignments"
 output: html_document
 ---
 
+#### Changes
+* No changes to Science
+* Scored 100% on 4/24 in Math
+* Hasn't received scores for two older assignments in Math
+* Received 2 0% and 2 100% grades in Band -- The missing practice records in Band are killing his grade
+
 ```{r, include=FALSE}
 library(knitr)
 library(lubridate)
 library(stringr)
 library(XML)
 
-parse_class <- function(filename, dir = '~/R/Wyatt-Grades/data/') {
+parse_class <- function(filename, dir = '~/R-Github/R/Wyatt-Grades/data/') {
   x <- readHTMLTable(str_c(dir, filename))[[2]]
   x <- x[2:nrow(x), c(1:3, 9:11)]
   names(x) <- c('Date', 'Category', 'Assignment', 'Score', 'Percent', 'Grade')
@@ -51,7 +57,7 @@ last <- lapply(classes, last_assignments, n.assignments)
 ```
 
 ```{r, echo=FALSE, results='asis'}
-  tmp <- last[[3]]
-  rownames(tmp) <- 1:n.assignments
-  kable(tmp, caption = names(last)[3])
+  tmp <- last_assignments(classes[[3]], n = 8)
+  rownames(tmp) <- 1:8
+  kable(tmp, caption = 'Band')
 ```

@@ -3,6 +3,11 @@ title: "Wyatt's Grades on Recent Assignments"
 output: html_document
 ---
 
+#### Changes
+* Scored 76% on 4/14 in ELA
+* Scored 80% on 4/14 in Social Studies
+
+
 ```{r setOptions, include=FALSE}
 library(googleVis)
 op <- options(gvis.plot.tag='chart')
@@ -14,7 +19,7 @@ library(lubridate)
 library(stringr)
 library(XML)
 
-parse_class <- function(filename, dir = '~/R/Wyatt-Grades/data/') {
+parse_class <- function(filename, dir = '~/R-Github/R/Wyatt-Grades/data/') {
   x <- readHTMLTable(str_c(dir, filename))[[2]]
   x <- x[2:nrow(x), c(1:3, 9:11)]
   names(x) <- c('Date', 'Category', 'Assignment', 'Score', 'Percent', 'Grade')
@@ -46,17 +51,9 @@ percents <- sapply(scores, function(x) 100 * x[1] / x[2])
 ```
 
 ```{r, results='asis', tidy=FALSE, echo=FALSE}
-#tmp <- data.frame(Course = rownames(grades), Percent = grades$Percent)
-#gauges <- lapply(1:nrow(tmp), 
-#                 function(n) gvisGauge(tmp[n, c('Course', 'Percent')], 
-#                                       options=list(min=0, max=100, 
-#                                                    redFrom=0, redTo=69, 
-#                                                    yellowFrom=70, yellowTo=84, 
-#                                                    greenFrom=85, greenTo=100)))
 gauges <- gvisGauge(data.frame(Course = names(percents), Percent = round(percents, 1)), 
                     options=list(min=0, max=100, redFrom=0, redTo=69, 
                     yellowFrom=70, yellowTo=84, greenFrom=85, greenTo=100))
-
 plot(gauges)
 ```
 

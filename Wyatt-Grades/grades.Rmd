@@ -15,7 +15,7 @@ library(stringr)
 library(XML)
 
 # Grades & Attendance
-tmp <- readHTMLTable('~/R/Wyatt-Grades/data/grades.html')[[1]]
+tmp <- readHTMLTable('~/R-Github/R/Wyatt-Grades/data/grades.html')[[1]]
 grades <- tmp[c(4:7, 9:10) , c(17, 20, 21)]
 colnames(grades) <- c('Grade', 'Absences', 'Tardies')
 rownames(grades) <- c('Science', 'Math', 'Band', 'Enrichment', 'Language Arts', 'Social Studies')
@@ -26,7 +26,7 @@ grades <- grades[ , c(1, 4, 2, 3)]
 
 ```{r, echo=FALSE, results='asis'}
 library(knitr)
-kable(t(grades), caption = 'Last Updated: Apr 18, 2017')
+kable(t(grades), caption = 'Last Updated: Apr 26, 2017')
 ```
 
 ```{r, results='asis', tidy=FALSE, echo=FALSE}
@@ -36,3 +36,6 @@ gauges <- gvisGauge(data.frame(Course = rownames(grades), Percent = grades$Perce
 plot(gauges)
 ```
 
+### Changes
+* The band grade dropped from 76% to 66%
+* The social studies grade improved from 64% to 69%
