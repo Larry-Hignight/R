@@ -4,10 +4,10 @@ output: html_document
 ---
 
 #### Changes
-* No changes to Science
-* Scored 100% on 4/24 in Math
-* Hasn't received scores for two older assignments in Math
-* Received 2 0% and 2 100% grades in Band -- The missing practice records in Band are killing his grade
+* Wyatt has performed well on the recent Science assignments
+* Wyatt has performed well on the recent Math assignments
+* Band practice is still an issue;  The most recent grade was 25/50
+
 
 ```{r, include=FALSE}
 library(knitr)

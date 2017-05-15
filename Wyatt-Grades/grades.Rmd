@@ -26,7 +26,7 @@ grades <- grades[ , c(1, 4, 2, 3)]
 
 ```{r, echo=FALSE, results='asis'}
 library(knitr)
-kable(t(grades), caption = 'Last Updated: Apr 26, 2017')
+kable(t(grades), caption = 'Last Updated: May 14, 2017')
 ```
 
 ```{r, results='asis', tidy=FALSE, echo=FALSE}
@@ -36,6 +36,14 @@ gauges <- gvisGauge(data.frame(Course = rownames(grades), Percent = grades$Perce
 plot(gauges)
 ```
 
-### Changes
-* The band grade dropped from 76% to 66%
-* The social studies grade improved from 64% to 69%
+#### Grade Change History
+```{r, results='asis', tidy=FALSE, echo=FALSE}
+changes <- data.frame(Dates = mdy(c('4/18/2017', '4/26/2017', '5/14/2017')),
+                      Science = c(83, 83, 84),
+                      Math = c(83, 83, 88),
+                      Band = c(76, 66, 62),
+                      ELA = c(69, 69, 67),
+                      Social_Studies = c(64, 68, 44))
+
+kable(changes, caption = '')
+```

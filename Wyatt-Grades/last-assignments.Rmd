@@ -4,8 +4,9 @@ output: html_document
 ---
 
 #### Changes
-* Scored 76% on 4/14 in ELA
-* Scored 80% on 4/14 in Social Studies
+* Recently, both ELA and Social Studies scores haven't been very good
+* Scored 0% and 70% on the most recent DoNow projects in ELA
+* Received a 0% score on the Heraldry Sheild project in Social Studies
 
 
 ```{r setOptions, include=FALSE}
