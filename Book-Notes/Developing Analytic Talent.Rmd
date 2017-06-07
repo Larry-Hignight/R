@@ -1,0 +1,27 @@
+---
+title: "Developing Analytic Talent"
+output: html_document
+---
+
+Chapter 2 - Page 43 
+
+Consider a new parameter, denoted as *m*, representing the number of paired (bivariate) independent time series selected out of the set of *k* time series at your disposal.  You want to compute correlations for these *m* pairs of time series.  Here's a theoritical question:  assuming you have *m* independent paired time series, each consisting of *n* numbers generated via a random number generator, what are the chances that among the *m* correlation coefficients that at least one is higher than 0.80?
+
+```{r}
+k <- 400               # The number of time series
+m <- k * (k - 1) / 2   # The number of pairs
+n <- 20                # The number of observations in each time series
+
+x <- replicate(k, runif(n))
+x.cor <- abs(cor(x))
+table(x.cor[x.cor > .75 & x.cor < 1.0])
+```
+
+In the above Monte-Carlo simulation, the number of pairs, *m* is 79,800 for *k* = 400 time series.  In the handful of simulations that I conducted, there were always two or more time series with either an absolute correlation greater than .8 (In one case, the correlation was .8953).  
+
+**However, I've noticed something odd about the number of dimensions in x.cor which makes me doubt the analysis.**
+
+
+
+
+
