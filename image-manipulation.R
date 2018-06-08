@@ -71,7 +71,7 @@ img_draw_box <- function(image, x1, y1, x2, y2) {
 ## Creates a histogram style plot of the image colors
 img_color_plot <- function(image, max = 5) {
   plot(0, 0, xlim = c(0, 1), ylim = c(0, max), main = 'Color Histogram', 
-       xlab = 'Color Value', ylab = 'Density', type = 'l', pch = '.')
+       xlab = 'Color Value', ylab = 'Density', type = 'n')
   lines(density(image[ , , 1]), col = 'red', lwd = 2)
   lines(density(image[ , , 2]), col = 'green', lwd = 2)
   lines(density(image[ , , 3]), col = 'blue', lwd = 2)
